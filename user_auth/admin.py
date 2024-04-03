@@ -25,6 +25,6 @@ class CustomUserAdmin(UserAdmin):
     )
 
     list_display = ('id', 'username', 'first_name', 'last_name', 'email', 'phone', 'is_active', 'is_staff', 'is_superuser')
-    list_editable = ('is_active', 'is_staff', 'is_superuser')
+    list_editable = ('phone', 'is_active', 'is_staff', 'is_superuser')
     list_display_links = ('username',)
     ordering = ('id',)

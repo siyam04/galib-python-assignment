@@ -26,4 +26,8 @@ class MovieDetailSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'genre', 'rating', 'release_date', 'average_rating')
 
     def get_average_rating(self, obj):
-        return obj.movierating_set.aggregate(Avg('rating'))['rating__avg']
+        average_rating = obj.movierating_set.aggregate(Avg('rating'))['rating__avg']
+        if average_rating is not None:
+            return round(average_rating, 1)  # Round to 1 decimal place
+        else:
+            return None  # or any other value

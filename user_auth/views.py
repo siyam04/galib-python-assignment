@@ -40,8 +40,8 @@ class UserReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
 
 class LoginAPIView(APIView):
     """
-    API View for simple login & logout. Token based authentication will be good.
-    This login & logout won't make any changes to the user without sending token to API headers.
+    API View for simple login. Token based authentication will be good.
+    This login won't make any changes to the user without sending token to API headers.
     """
     def post(self, request):
         username = request.data.get('username')
@@ -57,6 +57,9 @@ class LoginAPIView(APIView):
 
 
 class LogoutAPIView(APIView):
+    """
+    API View for simple logout.
+    """
     def get(self, request):
         logout(request)
         return Response({'message': 'Logout successful'}, status=status.HTTP_200_OK)
