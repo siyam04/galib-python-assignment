@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # dependencies
     'drf_yasg',
     'corsheaders',
+    'django_filters',
     'rest_framework',
 
     # custom apps
@@ -71,6 +72,9 @@ MIDDLEWARE = [
 
 # django-cors-headers
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Custom user model
+AUTH_USER_MODEL = 'user_auth.CustomUser'
 
 ROOT_URLCONF = 'config.urls'
 
