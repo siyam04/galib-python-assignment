@@ -1,6 +1,8 @@
-#### Check My Resume & Coding Test Documentation:
-* Inside /docs Folder
+* Check My Resume inside /docs Folder:
 > PATH: galib-python-assignment/utils/docs
+
+* Notes:
+>> Due to my time shortage, I've tried to
 
 <hr/>
 
@@ -30,13 +32,5 @@
 * API Doc: http://localhost:8000/
 * Django Admin: http://127.0.0.1:8000/admin/
 * GitHub: https://github.com/siyam04/galib-python-assignment
-
-<hr/>
-
-### Populate Fake Data
-
-```
-python generate_fake_data.py
-```
 
 <hr/>

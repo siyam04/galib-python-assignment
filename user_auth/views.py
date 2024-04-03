@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from rest_framework.filters import OrderingFilter
 from django.contrib.auth import authenticate, logout
+from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import UserSerializer
@@ -16,6 +17,8 @@ class UserCreateAPIView(APIView):
     """
     API View for creating a new user
     """
+    permission_classes = [IsAuthenticated]
+
     def post(self, request, format=None):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -35,13 +38,11 @@ class UserReadOnlyModelViewSet(viewsets.ReadOnlyModelViewSet):
     ordering = ['id']
 
 
-class UserAuthAPIView(APIView):
+class LoginAPIView(APIView):
     """
     API View for simple login & logout. Token based authentication will be good.
     This login & logout won't make any changes to the user without sending token to API headers.
     """
-
-    # Login request
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
@@ -54,7 +55,8 @@ class UserAuthAPIView(APIView):
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
 
-    # Logout request
+
+class LogoutAPIView(APIView):
     def get(self, request):
         logout(request)
         return Response({'message': 'Logout successful'}, status=status.HTTP_200_OK)

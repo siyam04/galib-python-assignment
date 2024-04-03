@@ -4,7 +4,8 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     UserCreateAPIView,
     UserReadOnlyModelViewSet,
-    UserAuthAPIView
+    LoginAPIView,
+    LogoutAPIView
 )
 
 
@@ -23,10 +24,10 @@ urlpatterns = [
     path('create-user/', UserCreateAPIView.as_view(), name='create-user'),
 
     # Login user: /api/v1/auth/login/
-    path('login/', UserAuthAPIView.as_view(), name='login'),
+    path('login/', LoginAPIView.as_view(), name='login'),
 
     # Logout user: /api/v1/auth/logout/
-    path('logout/', UserAuthAPIView.as_view(), name='logout'),
+    path('logout/', LogoutAPIView.as_view(), name='logout'),
 
 ]
 
